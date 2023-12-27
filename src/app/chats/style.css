@@ -1,0 +1,12 @@
+.custom-card {
+    width: 49%;
+    border-radius: 15px;
+}
+
+.custom-card:nth-child(1) {
+    margin-bottom: 1vh;
+}
+
+.custom-card:nth-child(2) {
+    margin-bottom: 1vh;
+}
