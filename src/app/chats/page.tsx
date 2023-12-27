@@ -20,6 +20,7 @@ const apiKey = process.env.NEXT_PUBLIC_GOOGLE_SECRET_KEY;
 
 export default function ChatsDashboard() {
   const [message, setMessage] = useState("");
+  const [firstTime, setFirstTime] = useState(0);
   const genAI = new GoogleGenerativeAI(apiKey);
   const [isLoading, setIsLoading] = useState(false);
   async function chat(prompt: string) {
@@ -52,20 +53,20 @@ export default function ChatsDashboard() {
   });
 
   return (
-    <div className="flex">
-      <div className="w-1/5">
+    <div className="flex parent-div">
+      <div className="w-1/5 shadow">
         <NavBar />
       </div>
       <div className="top-0 w-4/5">
-        <div className="border-2 border-red-600 w-full h-4/5 flex flex-col justify-between items-center">
+        <div className="w-full h-4/5 flex flex-col justify-between items-center">
           <div className="absolute right-0 pt-2 pr-2">
             <Dropdown />
           </div>
-          <div className="flex flex-col items-center mt-9">
-            <Image width={120} height={120} src={logo} alt="logo" />
-            <h2>How can i help you today?</h2>
+          <div className="flex flex-col items-center hero">
+            <Image width={110} height={110} src={logo} alt="logo" />
+            <h2 className="text-xl font-semibold">How can i help you today?</h2>
           </div>
-          <div className="border-2 border-red-600 w-3/5 bottom-0 h-2/5 flex flex-wrap justify-between">
+          <div className="w-3/5 sug-div bottom-0 h-2/5 flex flex-wrap justify-between">
             <Card className="border border-gray-300 bg-transparent shadow-none custom-card">
               <CardHeader>
                 <CardTitle className="text-lg">Help me debug</CardTitle>
@@ -92,7 +93,7 @@ export default function ChatsDashboard() {
             </Card>
           </div>
         </div>
-        <div className="bottom-0 border-2 border-red-600 w-full h-1/5 flex items-center justify-center">
+        <div className="w-full h-1/5 flex items-center justify-center">
           <div className="relative flex items-center w-1/2 lg:w-3/5">
             <Textarea
               className="border-none pt-3 pb-3 pr-7 w-full h-full resize-none overflow-auto"
@@ -101,8 +102,19 @@ export default function ChatsDashboard() {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               onInput={(e) => {
-                // e.target.style.height = "auto";
-                e.target.style.height = e.target.scrollHeight + "px";
+                let trimmedValue = e.target.value.trim();
+                if (trimmedValue.length === 0 || trimmedValue === "\n") {
+                  e.target.style.height = "1em";
+                  setFirstTime(0); // Reset firstTime when textarea is empty
+                } else {
+                  if (firstTime < 70) {
+                    e.target.style.height = "1em";
+                    setFirstTime(firstTime + 1);
+                  } else {
+                    e.target.style.height = "auto";
+                  }
+                  e.target.style.height = e.target.scrollHeight + "px";
+                }
               }}
               style={{ height: "1em", maxHeight: "17vh" }}
             />
