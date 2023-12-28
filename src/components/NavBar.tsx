@@ -1,8 +1,8 @@
 import Image from "next/image";
 import logo from "../../public/logo.png";
-import userImage from "../../public/kawaii.jpg";
 import { Plus } from "lucide-react";
 import './style.css';
+import { UserButton } from "@clerk/nextjs";
 
 export default function NavBar() {
   return (
@@ -18,13 +18,7 @@ export default function NavBar() {
       </div>
       <div className="prev-chats"></div>
       <div className="absolute bottom-0 gap-2 pb-2 flex items-center justify-start pl-3">
-        <Image
-          width={40}
-          height={40}
-          src={userImage}
-          alt="logo"
-          className="rounded-full"
-        />
+        <UserButton />
         <span>Felix Dawodu</span>
       </div>
     </div>

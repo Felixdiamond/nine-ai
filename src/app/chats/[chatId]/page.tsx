@@ -2,7 +2,7 @@
 
 import Dropdown from "@/components/DropDown";
 import NavBar from "@/components/NavBar";
-import logo from "../../../public/logo.png";
+import logo from "../../../../public/logo.png";
 import Image from "next/image";
 import {
   Card,
@@ -10,7 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import "./style.css";
+import "../style.css";
 import { Send } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
@@ -20,7 +20,7 @@ import { useRouter } from "next/navigation";
 
 const apiKey = process.env.NEXT_PUBLIC_GOOGLE_SECRET_KEY;
 
-export default function ChatsDashboard() {
+export default function ChatSession() {
   const router = useRouter();
   const [message, setMessage] = useState("");
   const [firstTime, setFirstTime] = useState(0);

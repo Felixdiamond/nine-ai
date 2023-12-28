@@ -12,35 +12,34 @@ export default function Home() {
   const [message, setMessage] = useState("");
   const genAI = new GoogleGenerativeAI(apiKey);
   const [isLoading, setIsLoading] = useState(false);
-  async function chat(prompt: string) {
-    setIsLoading(true);
-    document.removeEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        chat(message);
-      }
-    });
-    // For text-only input, use the gemini-pro model
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+  // async function chat(prompt: string) {
+  //   setIsLoading(true);
+  //   document.removeEventListener("keydown", (e) => {
+  //     if (e.key === "Enter") {
+  //       chat(message);
+  //     }
+  //   });
+  //   // For text-only input, use the gemini-pro model
+  //   const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const text = response.text();
-    console.log(text);
-    setIsLoading(false);
-    setMessage("");
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        chat(message);
-      }
-    }
-    );
-  }
+  //   const result = await model.generateContent(prompt);
+  //   const response = await result.response;
+  //   const text = response.text();
+  //   console.log(text);
+  //   setIsLoading(false);
+  //   setMessage("");
+  //   document.addEventListener("keydown", (e) => {
+  //     if (e.key === "Enter") {
+  //       chat(message);
+  //     }
+  //   });
+  // }
 
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      chat(message);
-    }
-  });
+  // document.addEventListener("keydown", (e) => {
+  //   if (e.key === "Enter") {
+  //     chat(message);
+  //   }
+  // });
 
   return (
     <div className="flex items-center justify-center h-screen">
@@ -58,32 +57,36 @@ export default function Home() {
           style={{ height: "1em", maxHeight: "50vh" }}
         />
 
-          {
-            isLoading ? (
-              <svg
-                className="animate-spin h-5 w-5 text-black absolute right-0 mr-1"
-                onClick={() => chat(message)}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24">
-                <circle
-                  className="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  strokeWidth="4"></circle>
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0
+        {isLoading ? (
+          <svg
+            className="animate-spin h-5 w-5 text-black absolute right-0 mr-1"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              className="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              strokeWidth="4"
+            ></circle>
+            <path
+              className="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0
                   12h4zm2 5.291A7.962 7.962 0 014 12H0c0
-                  3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-            ) : (
-              <Send size={24} className="absolute right-0 mr-1" />
-            )
-          }
+                  3.042 1.135 5.824 3 7.938l3-2.647z"
+            ></path>
+          </svg>
+        ) : (
+          <Send
+            size={24}
+            // onClick={() => chat(message)}
+            className="absolute right-0 mr-1"
+          />
+        )}
       </div>
     </div>
   );
