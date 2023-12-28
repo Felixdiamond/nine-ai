@@ -18,7 +18,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import generateRanString from "@/components/genRanString";
 import { useRouter } from "next/navigation";
 
-const apiKey = process.env.NEXT_PUBLIC_GOOGLE_SECRET_KEY;
+const apiKey: string = process.env.NEXT_PUBLIC_GOOGLE_SECRET_KEY!;
 
 export default function ChatSession() {
   const router = useRouter();
@@ -97,18 +97,19 @@ export default function ChatSession() {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               onInput={(e) => {
-                let trimmedValue = e.target.value.trim();
+                let target = e.target as HTMLTextAreaElement;
+                let trimmedValue = target.value.trim();
                 if (trimmedValue.length === 0 || trimmedValue === "\n") {
-                  e.target.style.height = "1em";
+                  target.style.height = "1em";
                   setFirstTime(0); // Reset firstTime when textarea is empty
                 } else {
                   if (firstTime < 70) {
-                    e.target.style.height = "1em";
+                    target.style.height = "1em";
                     setFirstTime(firstTime + 1);
                   } else {
-                    e.target.style.height = "auto";
+                    target.style.height = "auto";
                   }
-                  e.target.style.height = e.target.scrollHeight + "px";
+                  target.style.height = target.scrollHeight + "px";
                 }
               }}
               style={{ height: "1em", maxHeight: "17vh" }}
