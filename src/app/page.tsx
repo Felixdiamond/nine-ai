@@ -10,8 +10,9 @@ import { useState } from "react";
 
 export default function Home() {
   const [message, setMessage] = useState("");
-  const genAI = new GoogleGenerativeAI(apiKey);
+  const apiKey: string = process.env.NEXT_PUBLIC_GOOGLE_SECRET_KEY!;
   const [isLoading, setIsLoading] = useState(false);
+  const [firstTime, setFirstTime] = useState(0);
   // async function chat(prompt: string) {
   //   setIsLoading(true);
   //   document.removeEventListener("keydown", (e) => {
@@ -44,19 +45,30 @@ export default function Home() {
   return (
     <div className="flex items-center justify-center h-screen">
       <div className="relative flex items-center w-1/2 lg:w-2/5">
-        <Textarea
-          className="border-none pt-3 pb-3 w-full h-full resize-none overflow-auto"
-          placeholder="Type your message"
-          contentEditable={true}
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          onInput={(e) => {
-            // e.target.style.height = "auto";
-            e.target.style.height = e.target.scrollHeight + "px";
-          }}
-          style={{ height: "1em", maxHeight: "50vh" }}
-        />
-
+      <Textarea
+              className="border-none pt-3 pb-3 pr-7 w-full h-full resize-none overflow-auto"
+              placeholder="Type your message"
+              contentEditable={true}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              onInput={(e) => {
+                let target = e.target as HTMLTextAreaElement;
+                let trimmedValue = target.value.trim();
+                if (trimmedValue.length === 0 || trimmedValue === "\n") {
+                  target.style.height = "1em";
+                  setFirstTime(0); // Reset firstTime when textarea is empty
+                } else {
+                  if (firstTime < 70) {
+                    target.style.height = "1em";
+                    setFirstTime(firstTime + 1);
+                  } else {
+                    target.style.height = "auto";
+                  }
+                  target.style.height = target.scrollHeight + "px";
+                }
+              }}
+              style={{ height: "1em", maxHeight: "17vh" }}
+            />
         {isLoading ? (
           <svg
             className="animate-spin h-5 w-5 text-black absolute right-0 mr-1"
