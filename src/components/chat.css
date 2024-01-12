@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+.messagesdiv {
+    width: 100%;
+    max-width: 100% !important;
+    max-height: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1;
+    padding-top: 3.8rem;
+}
+
+.lilpic {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.opaquediv {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    z-index: 2;
+    width: 80%;
+    height: 3.5rem;
+    transform-origin: left;
+    transform: scaleX(0.985);
+    transition: transform 0.5s ease-in-out;
+    mix-blend-mode: normal;
+}
+
+.userdiv {
+    /* background-image: radial-gradient( circle 815px at 23.4% -21.8%,  rgba(9,29,85,1) 0.2%, rgba(0,0,0,1) 100.2% ); */
+    background-image: radial-gradient( circle 610px at 5.2% 51.6%,  rgba(5,8,114,1) 0%, rgba(7,3,53,1) 97.5% );
+    width: fit-content;
+    color: white;
+    max-width: 65% !important;
+}
+
+.react-markdown {
+    font-family: 'Roboto', sans-serif;
+}
+
+.botdiv {
+    max-width: 65% !important;
+}

@@ -1,5 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&display=swap');
+
 span {
     font-family: 'Raleway', sans-serif;
-    font-weight: 600;
 }
+
+.parent-div {
+    font-family: 'Raleway', sans-serif;
+}
+
+.custom-card {
+  width: 49%;
+  border-radius: 15px;
+  height: min-content;
+}
+
+textarea::-webkit-scrollbar {
+  width: 5px;
+}
+
+textarea::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background: #020817;
+  border-radius: 10px;
+  cursor: pointer !important;
+}
+
+textarea::-webkit-scrollbar-thumb:hover {
+  background: #010409;
+}
+
+svg {
+  cursor: pointer;
+}
+
+.hero {
+    margin-top: 10%;
+}
+
+/* Söhne, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" */

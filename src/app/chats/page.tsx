@@ -63,25 +63,25 @@ export default function ChatsDashboard() {
             <h2 className="text-xl font-semibold">How can i help you today?</h2>
           </div>
           <div className="w-3/5 sug-div bottom-0 h-2/5 flex flex-wrap justify-between">
-            <Card className="border border-gray-300 bg-transparent shadow-none custom-card">
+            <Card className="border border-gray-300 bg-transparent shadow-none custom-card cursor-pointer">
               <CardHeader>
                 <CardTitle className="text-lg">Help me debug</CardTitle>
                 <CardDescription>a linked list problem</CardDescription>
               </CardHeader>
             </Card>
-            <Card className="border border-gray-300 bg-transparent shadow-none custom-card">
+            <Card className="border border-gray-300 bg-transparent shadow-none custom-card cursor-pointer">
               <CardHeader>
                 <CardTitle className="text-lg">Help me debug</CardTitle>
                 <CardDescription>a linked list problem</CardDescription>
               </CardHeader>
             </Card>
-            <Card className="border border-gray-300 bg-transparent shadow-none custom-card">
+            <Card className="border border-gray-300 bg-transparent shadow-none custom-card cursor-pointer">
               <CardHeader>
                 <CardTitle className="text-lg">Help me debug</CardTitle>
                 <CardDescription>a linked list problem</CardDescription>
               </CardHeader>
             </Card>
-            <Card className="border border-gray-300 bg-transparent shadow-none custom-card">
+            <Card className="border border-gray-300 bg-transparent shadow-none custom-card cursor-pointer">
               <CardHeader>
                 <CardTitle className="text-lg">Help me debug</CardTitle>
                 <CardDescription>a linked list problem</CardDescription>
@@ -102,7 +102,7 @@ export default function ChatsDashboard() {
                 let trimmedValue = target.value.trim();
                 if (trimmedValue.length === 0 || trimmedValue === "\n") {
                   target.style.height = "1em";
-                  setFirstTime(0); // Reset firstTime when textarea is empty
+                  setFirstTime(0);
                 } else {
                   if (firstTime < 70) {
                     target.style.height = "1em";

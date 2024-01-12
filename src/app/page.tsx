@@ -13,34 +13,6 @@ export default function Home() {
   const apiKey: string = process.env.NEXT_PUBLIC_GOOGLE_SECRET_KEY!;
   const [isLoading, setIsLoading] = useState(false);
   const [firstTime, setFirstTime] = useState(0);
-  // async function chat(prompt: string) {
-  //   setIsLoading(true);
-  //   document.removeEventListener("keydown", (e) => {
-  //     if (e.key === "Enter") {
-  //       chat(message);
-  //     }
-  //   });
-  //   // For text-only input, use the gemini-pro model
-  //   const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-
-  //   const result = await model.generateContent(prompt);
-  //   const response = await result.response;
-  //   const text = response.text();
-  //   console.log(text);
-  //   setIsLoading(false);
-  //   setMessage("");
-  //   document.addEventListener("keydown", (e) => {
-  //     if (e.key === "Enter") {
-  //       chat(message);
-  //     }
-  //   });
-  // }
-
-  // document.addEventListener("keydown", (e) => {
-  //   if (e.key === "Enter") {
-  //     chat(message);
-  //   }
-  // });
 
   return (
     <div className="flex items-center justify-center h-screen">
